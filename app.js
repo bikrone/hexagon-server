@@ -31,7 +31,7 @@ var quitGame = function(username, roomid) {
 }
 
 var register = function(username, socket) {
-	if (players[username] !== undefined) {
+	if (players[username] != undefined) {
 		return -1;
 	}
 	players[username] = socket;
@@ -43,7 +43,12 @@ var register = function(username, socket) {
 }
 
 var unregister = function(username) {
-	players[username] = undefined;
+	try {
+		players[username] = undefined;
+
+	} catch (ex) {
+		console.log(ex);
+	}
 }
 
 var joinRoom = function(username, roomid) {
